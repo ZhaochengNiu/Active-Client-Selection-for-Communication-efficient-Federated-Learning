@@ -12,9 +12,14 @@ import torch
 from torch.utils.data import TensorDataset
 import torchvision.transforms as T
 
+# 这段代码定义了一个名为 FederatedCIFAR100Dataset 的类，用于加载和处理联邦CIFAR100数据集。
+# 这个数据集通常用于联邦学习的研究。以下是对代码的详细解释：
+
 
 class FederatedCIFAR100Dataset:
     def __init__(self, data_dir, args):
+        # FederatedCIFAR100Dataset 类的构造函数接受数据目录和参数对象 args。
+        # 它初始化了一些属性，包括类别数、训练客户端数、测试客户端数和批量大小。然后调用 _init_data 方法来加载数据。
         self.num_classes = 100
         self.train_num_clients = 500
         self.test_num_clients = 100
@@ -24,6 +29,7 @@ class FederatedCIFAR100Dataset:
         print(f'Total number of users: {self.train_num_clients}')
 
     def _init_data(self, data_dir):
+        # _init_data 方法尝试从文件中加载预处理后的数据集。如果文件不存在，则调用 preprocess 函数来预处理数据，并将结果保存到文件中。
         file_name = os.path.join(data_dir, 'FedCIFAR100_preprocessed.pickle')
         if os.path.isfile(file_name):
             with open(file_name, 'rb') as f:
@@ -34,6 +40,8 @@ class FederatedCIFAR100Dataset:
 
 
 def preprocess(data_dir, num_clients=None):
+    # preprocess 函数读取 CIFAR100 数据集的 HDF5 文件，加载训练和测试数据，并将图像进行预处理。
+    # 然后，它创建 TensorDataset 对象来存储图像数据和标签，并将它们存储在字典中。
     train_data = h5py.File(os.path.join(data_dir, 'fed_cifar100_train.h5'), 'r')
     test_data = h5py.File(os.path.join(data_dir, 'fed_cifar100_test.h5'), 'r')
 
@@ -96,11 +104,9 @@ def preprocess(data_dir, num_clients=None):
     return dataset
 
 
-
-
-
 def cifar100_transform(img_mean, img_std, train = True, crop_size = (24,24)):
     """cropping, flipping, and normalizing."""
+    # cifar100_transform 函数定义了 CIFAR100 数据集的转换操作，包括随机裁剪、翻转和归一化。
     if train:
         return T.Compose([
             T.ToPILImage(),
@@ -119,6 +125,7 @@ def cifar100_transform(img_mean, img_std, train = True, crop_size = (24,24)):
 
 
 def preprocess_cifar_img(img, train):
+    # preprocess_cifar_img 函数对 CIFAR100 图像进行预处理，包括缩放和应用定义的转换操作。
     # scale img to range [0,1] to fit ToTensor api
     img = torch.div(img, 255.0)
     transoformed_img = torch.stack(

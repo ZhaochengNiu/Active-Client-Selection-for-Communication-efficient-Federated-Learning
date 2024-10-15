@@ -9,9 +9,14 @@ import numpy as np
 import torch
 from torch.utils.data import TensorDataset
 
+# 这段代码定义了一个名为 FederatedEMNISTDataset 的类，它用于加载和处理联邦EMNIST数据集。
+# 这个数据集通常用于联邦学习的研究。以下是对代码的详细解释：
+
 
 class FederatedEMNISTDataset:
     def __init__(self, data_dir, args):
+        # FederatedEMNISTDataset 类的构造函数接受数据目录和参数对象 args。
+        # 它初始化了一些属性，包括类别数、训练客户端数、测试客户端数和批量大小。然后调用 _init_data 方法来加载数据，并打印训练用户的总数。
         self.num_classes = 62
         self.train_num_clients = 3400 if args.total_num_clients is None else args.total_num_clients
         self.test_num_clients = 3400 if args.total_num_clients is None else args.total_num_clients
@@ -21,6 +26,7 @@ class FederatedEMNISTDataset:
         print(f'Total number of users: {self.train_num_clients}')
 
     def _init_data(self, data_dir):
+        # _init_data 方法尝试从文件中加载预处理后的数据集。如果文件不存在，则调用 preprocess 函数来预处理数据，并将结果保存到文件中。
         file_name = os.path.join(data_dir, 'FederatedEMNIST_preprocessed_.pickle')
         if os.path.isfile(file_name):
             with open(file_name, 'rb') as f:
@@ -32,6 +38,8 @@ class FederatedEMNISTDataset:
 
 
 def preprocess(data_dir, num_clients=None):
+    # preprocess 函数读取 EMNIST 数据集的 HDF5 文件，加载训练和测试数据，并将图像调整为 PyTorch 张量。
+    # 然后，它创建 TensorDataset 对象来存储图像数据和标签，并将它们存储在字典中。
     train_data = h5py.File(os.path.join(data_dir, 'fed_emnist_train.h5'), 'r')
     test_data = h5py.File(os.path.join(data_dir, 'fed_emnist_test.h5'), 'r')
 

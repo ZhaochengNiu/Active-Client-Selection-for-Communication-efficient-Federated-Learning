@@ -11,10 +11,19 @@ import numpy as np
 
 from .client_selection import ClientSelection
 
+# 这段代码定义了两个联邦学习中的客户端选择策略类：ClusteredSampling1 和 ClusteredSampling2。
+# 这两个类都继承自 ClientSelection 基类，并实现了基于聚类算法的客户端选择策略。以下是对代码的详细解释：
+
+
+# 这两个类提供了基于聚类的客户端选择策略，有助于在联邦学习中选择具有代表性的客户端子集。这些策略可以提高学习效率并减少通信成本。
+
 
 '''Clustered Sampling Algorithm 1'''
+
+
 class ClusteredSampling1(ClientSelection):
     def __init__(self, total, device, n_cluster):
+        # ClusteredSampling1 类的构造函数接受客户端总数、设备和聚类数量作为参数。
         super().__init__(total, device)
         self.n_cluster = n_cluster
 
@@ -24,6 +33,7 @@ class ClusteredSampling1(ClientSelection):
         unless n_i changes during the learning process,
         Algo 1 needs to be run only once at the beginning of the learning process.
         '''
+        # setup 方法根据客户端的样本大小进行聚类，并初始化每个聚类中客户端的分布。
         epsilon = int(10 ** 10)
         client_ids = sorted(n_samples.keys())
         n_samples = np.array([n_samples[i] for i in client_ids])
@@ -50,8 +60,8 @@ class ClusteredSampling1(ClientSelection):
 
         self.distri_clusters = distri_clusters
 
-
     def select(self, n, client_idxs, metric=None):
+        # select 方法根据聚类分布选择客户端。
         #selected_client_idxs = [int(np.random.choice(self.total, 1, p=self.distri_clusters[k])) for k in range(n)]
         selected_client_idxs = []
         for k in range(n):
@@ -65,6 +75,7 @@ class ClusteredSampling1(ClientSelection):
 class ClusteredSampling2(ClientSelection):
     def __init__(self, total, device, dist):
         super().__init__(total, device)
+        # ClusteredSampling2 类的构造函数接受客户端总数、设备和距离类型作为参数。
         self.distance_type = dist
 
     def setup(self, n_samples):
@@ -72,15 +83,18 @@ class ClusteredSampling2(ClientSelection):
         return the `representative gradient` formed by the difference
         between the local work and the sent global model
         """
+        # setup 方法初始化客户端的权重。
         client_ids = sorted(n_samples.keys())
         n_samples = np.array([n_samples[i] for i in client_ids])
         self.weights = n_samples / np.sum(n_samples)
 
     def init(self, global_m, local_models):
+        # init 方法初始化全局模型和本地模型的梯度。
         self.prev_global_m = global_m
         self.gradients = self.get_gradients(global_m, local_models)
 
     def select(self, n, client_idxs, metric=None):
+        # select 方法根据梯度的相似性矩阵和聚类算法选择客户端。
         # GET THE CLIENTS' SIMILARITY MATRIX
         sim_matrix = self.get_matrix_similarity_from_grads(
             self.gradients, distance_type=self.distance_type)

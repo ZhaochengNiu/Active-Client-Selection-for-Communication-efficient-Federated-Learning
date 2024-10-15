@@ -6,10 +6,12 @@ import numpy as np
 import sys
 import multiprocessing as mp
 import random
-
+# 导入了 Client 类和客户端选择配置。
 from .client import Client
 from .client_selection.config import *
 
+# 这段代码定义了一个名为 Server 的类，它在联邦学习（Federated Learning, FL）框架中扮演中心服务器的角色。
+# 服务器负责初始化全局模型，管理客户端选择，协调客户端训练，以及聚合客户端更新。下面是对代码的逐行解释：
 
 
 class Server(object):
@@ -25,7 +27,16 @@ class Server(object):
             fed_algo: FL algorithm for aggregation at server
             results: results for recording
         """
+        # 定义了 Server 类的构造函数，它接受以下参数：
+        #
+        # data：FL的Dataset。
+        # init_model：初始全局模型。
+        # args：整体FL训练的参数。
+        # selection：客户端选择方法。
+        # fed_algo：FL算法用于服务器端的聚合。
+        # files：用于记录结果的文件。
         self.train_data = data['train']['data']
+        # 初始化训练数据。
         self.train_sizes = data['train']['data_sizes']
         self.test_data = data['test']['data']
         self.test_sizes = data['test']['data_sizes']
@@ -34,8 +45,11 @@ class Server(object):
         self.device = args.device
         self.args = args
         self.global_model = init_model
+        # 设置全局模型。
         self.selection_method = selection
+        # 设置客户端选择方法。
         self.federated_method = fed_algo
+        # 设置联邦学习方法用于模型聚合。
         self.files = files
 
         self.nCPU = mp.cpu_count() // 2 if args.nCPU is None else args.nCPU
@@ -78,7 +92,9 @@ class Server(object):
             init_model: initial given global model
         """
         self.client_list = []
+        # 初始化客户端列表。
         for client_idx in range(self.total_num_client):
+            # 为每个客户端创建一个 Client 实例并添加到客户端列表中。
             local_train_data = self.train_data[client_idx]
             local_test_data = self.test_data[client_idx] if client_idx in self.test_clients else np.array([])
             c = Client(client_idx, self.train_sizes[client_idx], local_train_data, local_test_data,
@@ -89,8 +105,10 @@ class Server(object):
         """
         FL training
         """
+        # 定义了 train 方法，用于执行FL训练。
         ## ITER COMMUNICATION ROUND
         for round_idx in range(self.total_round):
+            # 进行多轮训练，每轮训练可能包括客户端选择、本地更新、模型聚合和测试。
             print(f'\n>> ROUND {round_idx}')
 
             ## GET GLOBAL MODEL
@@ -124,11 +142,13 @@ class Server(object):
                 # np.random.seed((self.args.seed+1)*10000 + round_idx)
                 print(f'> pre-client selection {self.num_clients_per_round}/{len(client_indices)}')
                 client_indices = self.selection_method.select(self.num_clients_per_round, client_indices, None)
+                # 根据客户端选择方法选择参与本轮训练的客户端。
                 print(f'selected clients: {sorted(client_indices)[:10]}')
 
 
             ## CLIENT UPDATE (TRAINING)
             local_losses, accuracy, local_metrics = self.train_clients(client_indices)
+            # 在选定的客户端上进行本地训练，并返回损失、准确率和本地指标。
 
 
             ## CLIENT SELECTION
@@ -167,6 +187,7 @@ class Server(object):
             local_models = [self.client_list[idx].trainer.get_model() for idx in client_indices]
             if self.args.fed_algo == 'FedAvg':
                 global_model_params = self.federated_method.update(local_models, client_indices)
+                # 使用联邦学习算法聚合客户端的模型更新。
             else:
                 global_model_params = self.federated_method.update(local_models, client_indices, self.global_model, self.client_list)
 
@@ -188,9 +209,9 @@ class Server(object):
             del local_models, local_losses, accuracy
 
         for k in self.files:
+            # 关闭所有打开的文件。
             if self.files[k] is not None:
                 self.files[k].close()
-
 
 
     def local_training(self, client_idx):
@@ -202,6 +223,7 @@ class Server(object):
         Return
             result: trained model, (total) loss value, accuracy
         """
+        # 定义了 local_training 方法，用于在单个客户端上进行训练。
         client = self.client_list[client_idx]
         if self.args.method in LOSS_THRESHOLD:
             client.trainer.update_ltr(self.ltr)
@@ -216,6 +238,7 @@ class Server(object):
             client_idx: client index for test
             results: loss, acc, auc
         """
+        # 定义了 local_testing 方法，用于在单个客户端上进行测试。
         client = self.client_list[client_idx]
         result = client.test(self.global_model, self.test_on_training_data)
         return result
@@ -229,6 +252,7 @@ class Server(object):
         Return
             trained models, loss values, accuracies
         """
+        # 定义了 train_clients 方法，用于在多个客户端上并行进行训练。
         local_losses, accuracy, local_metrics = [], [], []
         ll, lh = np.inf, 0.
         # local training with multi processing
@@ -281,6 +305,7 @@ class Server(object):
             TrainALL: test on train dataset
             Test: test on test dataset
         """
+        # 定义了 test 方法，用于在多个客户端上并行进行测试。
         metrics = {'loss': [], 'acc': []}
         if self.args.use_mp:
             iter = 0
@@ -321,6 +346,7 @@ class Server(object):
         Return
             record "Round,TrainLoss,TrainAcc,TestLoss,TestAcc"
         """
+        # 定义了 save_current_updates 方法，用于记录当前的训练或测试结果。
         loss, acc = sum(losses) / num_clients, sum(accs) / num_clients
 
         if phase == 'Train':
@@ -352,6 +378,7 @@ class Server(object):
             round_idx: current round
             client_indices: clients' indices to save
         """
+        # 定义了 save_selected_clients 方法，用于记录每轮选中的客户端。
         self.files['client'].write(f'{round_idx+1},')
         np.array(client_indices).astype(int).tofile(self.files['client'], sep=',')
         self.files['client'].write('\n')
@@ -363,6 +390,7 @@ class Server(object):
         Args
             local_models: local clients' models
         """
+        # 定义了 weight_variance 方法，用于计算模型权重的方差。
         variance = 0
         for k in tqdm(local_models[0].state_dict().keys(), desc='>> compute weight variance'):
             tmp = []
@@ -384,6 +412,7 @@ def progressBar(idx, total, result, phase='Train', bar_length=20):
         phase: Train or Test
         bar_length: length of progress bar
     """
+    # 定义了 progressBar 函数，用于显示训练或测试的进度条。
     percent = float(idx) / total
     arrow = '=' * int(round(percent * bar_length) - 1) + '>'
     spaces = ' ' * (bar_length - len(arrow))

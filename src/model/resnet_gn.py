@@ -7,7 +7,11 @@ import math
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 from .group_normalization import *
+# 导入所需的 PyTorch 模块和自定义的 Group Normalization 模块。
 
+# 这段代码是用于构建和训练 ResNet 模型的 PyTorch 实现，
+# 它提供了不同版本的 ResNet（例如 ResNet-18, ResNet-34, ResNet-50, ResNet-101, ResNet-152）的实现。
+# 这些模型是在计算机视觉领域广泛使用的深度学习模型，特别适用于图像分类任务。以下是代码的详细解释：
 
 __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101',
            'resnet152']
@@ -20,15 +24,18 @@ model_urls = {
     'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
     'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
 }
+# 定义了不同 ResNet 模型的预训练模型 URL。
 
 
 def conv3x3(in_planes, out_planes, stride=1):
     """3x3 convolution with padding"""
+    # 定义了一个 3x3 卷积层的辅助函数。
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
                      padding=1, bias=False)
 
 
 def norm2d(planes, num_channels_per_group=32):
+    # 定义了一个用于选择 GroupNorm 或 BatchNorm 的辅助函数。
     print("num_channels_per_group:{}".format(num_channels_per_group))
     if num_channels_per_group > 0:
         return GroupNorm2d(planes, num_channels_per_group, affine=True,
@@ -39,6 +46,7 @@ def norm2d(planes, num_channels_per_group=32):
 
 class BasicBlock(nn.Module):
     expansion = 1
+    # 定义了 ResNet 中的基本块（BasicBlock），这是构建 ResNet 的基本单元。
 
     def __init__(self, inplanes, planes, stride=1, downsample=None,
                  group_norm=0):
@@ -71,6 +79,7 @@ class BasicBlock(nn.Module):
 
 
 class Bottleneck(nn.Module):
+    # 定义了 ResNet 中的瓶颈块（Bottleneck），这是另一种构建 ResNet 的基本单元，通常用于更深的 ResNet 模型中。
     expansion = 4
 
     def __init__(self, inplanes, planes, stride=1, downsample=None,
@@ -111,7 +120,7 @@ class Bottleneck(nn.Module):
 
 
 class ResNet(nn.Module):
-
+    # 定义了 ResNet 模型，它接受不同的块类型（BasicBlock 或 Bottleneck）和层数来构建不同版本的 ResNet。
     def __init__(self, block, layers, num_classes=1000, group_norm=0):
         self.inplanes = 64
         super(ResNet, self).__init__()
@@ -184,6 +193,8 @@ class ResNet(nn.Module):
         x = self.fc(x)
 
         return x
+
+# 这些函数用于构建不同版本的 ResNet 模型，并提供了加载预训练模型的选项。
 
 
 def resnet18(pretrained=False, **kwargs):

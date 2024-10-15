@@ -9,7 +9,12 @@ import numpy as np
 import torch
 from tqdm import tqdm
 from itertools import product
+import sys
 
+# 这段代码定义了一个名为 DivFL 的类，它实现了一种基于子模函数最大化的多样化客户端选择策略，用于联邦学习环境。以下是对代码的详细解释：
+
+# 这个 DivFL 类提供了一种基于梯度信息的多样化客户端选择策略，旨在提高联邦学习中的学习效率和公平性。
+# 通过选择具有代表性梯度信息的客户端，该方法有助于减少通信成本，同时提高模型的泛化能力。
 
 
 '''Diverse Client Selection'''
@@ -23,11 +28,14 @@ class DivFL(ClientSelection):
         if subset_ratio is None:
             sys.exit('Please set the hyperparameter: subset ratio! =)')
         self.subset_ratio = subset_ratio
+        # DivFL 类继承自 ClientSelection 基类，并初始化构造函数。它接受客户端总数、设备和子集比例作为参数。
 
     def init(self, global_m, l=None):
+        # init 方法用于初始化全局模型。
         self.prev_global_m = global_m
 
     def select(self, n, client_idxs, metric, round=0, results=None):
+        # select 方法实现了客户端选择逻辑。它首先获取客户端的梯度，然后计算梯度之间的相似性矩阵，最后使用随机贪婪算法选择客户端。
         # pre-select
         '''
         ---
@@ -47,6 +55,7 @@ class DivFL(ClientSelection):
         return the `representative gradient` formed by the difference
         between the local work and the sent global model
         """
+        # get_gradients 方法计算本地模型与全局模型之间的梯度差异。
         local_model_params = []
         for model in local_models:
             local_model_params += [[tens.detach().to(self.device) for tens in list(model.parameters())]] #.numpy()
@@ -66,6 +75,7 @@ class DivFL(ClientSelection):
         return the similarity matrix where the distance chosen to
         compare two clients is set with `distance_type`
         """
+        # get_matrix_similarity_from_grads 方法计算梯度之间的相似性矩阵。
         n_clients = len(local_model_grads)
         metric_matrix = torch.zeros((n_clients, n_clients), device=self.device)
         for i, j in tqdm(product(range(n_clients), range(n_clients)), desc='>> similarity', total=n_clients**2, ncols=80):
@@ -76,6 +86,7 @@ class DivFL(ClientSelection):
         return metric_matrix
 
     def stochastic_greedy(self, num_total_clients, num_select_clients):
+        # stochastic_greedy 方法实现了随机贪婪算法，用于选择客户端。
         # num_clients is the target number of selected clients each round,
         # subsample is a parameter for the stochastic greedy alg
         # initialize the ground set and the selected set

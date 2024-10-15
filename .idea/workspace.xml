@@ -4,7 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d495209-5f52-428e-9130-3b0ddabe35d6" name="Changes" comment="" />
+    <list default="true" id="4d495209-5f52-428e-9130-3b0ddabe35d6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Active-Client-Selection-for-Communication-efficient-Federated-Learning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Active-Client-Selection-for-Communication-efficient-Federated-Learning.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/client_selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/client_selection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/clustered.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/clustered.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/divfl.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/divfl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/grad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/grad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/loss_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/loss_based.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/federated_algorithm/federated_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/federated_algorithm/federated_algorithm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FL_core/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/celeba.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/celeba.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/fed_cifar100.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/fed_cifar100.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/federated_emnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/federated_emnist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/federated_emnist_iid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/federated_emnist_iid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/federated_emnist_noniid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/federated_emnist_noniid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/partitioned_cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/partitioned_cifar10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/reddit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/reddit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BLSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BLSTM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/CNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/group_normalization.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/group_normalization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resnet_gn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/resnet_gn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/argparse.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/argparse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,9 +44,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2nFaGlD8RKe7QgGnVYD1rHs7TuO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,7 +56,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
