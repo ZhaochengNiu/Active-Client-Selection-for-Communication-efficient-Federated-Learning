@@ -5,6 +5,7 @@ Client Selection for Federated Learning
 
 # 导入Python标准库中的模块，用于操作操作系统功能、系统参数和时间。
 import os
+os.environ["WANDB_API_KEY"] = "f08348e3235c9ce05b0eb194f5d885c74d48c0e7"
 import sys
 import time
 import numpy as np
@@ -23,13 +24,13 @@ import torch
 import random
 
 # 从当前包中导入数据集、模型、服务器、客户端选择和联邦算法相关的模块。
-from .data import *
-from .model import *
-from .FL_core.server import Server
-from .FL_core.client_selection import *
-from .FL_core.federated_algorithm import *
-from .utils import utils
-from .utils.argparse import get_args
+from src.data import *
+from src.model import *
+from src.FL_core.server import Server
+from src.FL_core.client_selection import *
+from src.FL_core.federated_algorithm import *
+from src.utils import utils
+from src.utils.argparse import get_args
 
 
 # 定义一个函数load_data，用于根据参数args加载不同的数据集

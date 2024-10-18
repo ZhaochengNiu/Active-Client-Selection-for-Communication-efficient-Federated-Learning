@@ -23,7 +23,7 @@ class FederatedEMNISTDatasetIID:
         # 调用内部函数 _init_data 初始化数据集。
         self._init_data(data_dir)
         # 初始化后，计算训练集和测试集中客户端的数量并打印出来。
-        # self.dataset['train']['data_sizes'] 和 self.dataset['test']['data_sizes'] 是一个字典，键是客户端的 ID，值是每个客户端的数据大小。
+        # self.data['train']['data_sizes'] 和 self.data['test']['data_sizes'] 是一个字典，键是客户端的 ID，值是每个客户端的数据大小。
         self.train_num_clients = len(self.dataset['train']['data_sizes'].keys())
         self.test_num_clients = len(self.dataset['test']['data_sizes'].keys())
         print(f'#TrainClients {self.train_num_clients} #TestClients {self.test_num_clients}')
@@ -34,16 +34,16 @@ class FederatedEMNISTDatasetIID:
         if os.path.isfile(file_name):
             # 如果文件存在，使用 pickle 读取已预处理的数据集。
             # os.path.isfile(file_name) 检查文件是否存在，pickle.load(f) 用于从文件中加载 Python 对象。
-            print('> read dataset ...')
+            print('> read data ...')
             with open(file_name, 'rb') as f:
                 dataset = pickle.load(f)
         else:
             # 如果文件不存在，则调用 preprocess 函数处理数据集并创建新的数据。
-            print('> create dataset ...')
+            print('> create data ...')
             dataset = preprocess(data_dir, self.min_num_samples)
             # with open(file_name, 'wb') as f:
-            #     pickle.dump(dataset, f)
-        # 最后，将加载或新创建的数据集保存到 self.dataset 中，供后续使用。
+            #     pickle.dump(data, f)
+        # 最后，将加载或新创建的数据集保存到 self.data 中，供后续使用。
         self.dataset = dataset
 
 
@@ -59,7 +59,7 @@ def preprocess(data_dir, min_num_samples):
     num_clients_test = len(test_ids)
     print(f'#TrainClients {num_clients_train} #TestClients {num_clients_test}')
 
-    # local dataset
+    # local data
     # 初始化字典 train_data_local_dict 和 test_data_local_dict 来存储各个客户端的本地数据。
     # train_data_local_num_dict 和 test_data_local_num_dict 用来记录每个客户端的样本数量。idx 是一个全局索引，用于给每个客户端编号。
     train_data_local_dict, train_data_local_num_dict = {}, {}
@@ -103,7 +103,7 @@ def preprocess(data_dir, min_num_samples):
     # 处理完成后，关闭 HDF5 文件。
     train_data.close()
     test_data.close()
-    # 将所有训练和测试数据以及对应的样本数量打包到 dataset 字典中，供后续使用。
+    # 将所有训练和测试数据以及对应的样本数量打包到 data 字典中，供后续使用。
     dataset = {}
     dataset['train'] = {
         'data_sizes': train_data_local_num_dict,

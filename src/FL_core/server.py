@@ -20,7 +20,7 @@ class Server(object):
         Server to execute
         ---
         Args
-            data: dataset for FL
+            data: data for FL
             init_model: initial global model
             args: arguments for overall FL training
             selection: client selection method
@@ -198,12 +198,12 @@ class Server(object):
             ## TEST
             if round_idx % self.args.test_freq == 0:
                 self.global_model.eval()
-                # test on train dataset
+                # test on train data
                 if self.test_on_training_data:
                     self.test(self.total_num_client, phase='TrainALL')
                     self.test_on_training_data = False
 
-                # test on test dataset
+                # test on test data
                 self.test(len(self.test_clients), phase='Test')
 
             del local_models, local_losses, accuracy
@@ -302,8 +302,8 @@ class Server(object):
         ---
         Args
             num_clients_for_test: number of clients for test
-            TrainALL: test on train dataset
-            Test: test on test dataset
+            TrainALL: test on train data
+            Test: test on test data
         """
         # 定义了 test 方法，用于在多个客户端上并行进行测试。
         metrics = {'loss': [], 'acc': []}

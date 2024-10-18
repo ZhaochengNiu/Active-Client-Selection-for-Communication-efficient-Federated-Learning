@@ -38,7 +38,7 @@ class CelebADataset(object):
             with open(file_name, 'rb') as f:
                 dataset = pickle.load(f)
         else:
-            # dataset = preprocess(data_dir, self.img_size)
+            # data = preprocess(data_dir, self.img_size)
             dataset = preprocess_online_read(data_dir, self.img_size)
             with open(file_name, 'wb') as f:
                 pickle.dump(dataset, f)
@@ -65,7 +65,7 @@ def preprocess(data_dir, img_size=84):
     trainset_data, trainset_datasize = {}, {}
     testset_data, testset_datasize = {}, {}
 
-    for idx in tqdm(range(len(clients)), desc='create dataset'):
+    for idx in tqdm(range(len(clients)), desc='create data'):
         client_id = str(clients[idx])
         # train data
         train_x = [load_image(i, img_dir, img_size) for i in train_data[client_id]['x']]
@@ -80,7 +80,7 @@ def preprocess(data_dir, img_size=84):
         testset_datasize[idx] = len(test_y)
 
     dataset = {
-        'train': {'data': trainset_data, 'data_sizes': trainset_datasize}, 
+        'train': {'data': trainset_data, 'data_sizes': trainset_datasize},
         'test': {'data': testset_data, 'data_sizes': testset_datasize}
     }
     return dataset
@@ -167,7 +167,7 @@ def preprocess_online_read(data_dir, img_size=84):
         testset_datasize[idx] = client_data.num_data
 
     dataset = {
-        'train': {'data': trainset_data, 'data_sizes': trainset_datasize}, 
+        'train': {'data': trainset_data, 'data_sizes': trainset_datasize},
         'test': {'data': testset_data, 'data_sizes': testset_datasize}
     }
     return dataset

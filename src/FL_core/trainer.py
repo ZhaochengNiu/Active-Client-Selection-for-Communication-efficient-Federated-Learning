@@ -13,6 +13,7 @@ from sklearn.metrics import roc_auc_score
 # 这个 Trainer 类封装了模型的训练和测试过程，使得在联邦学习环境中可以方便地对模型进行本地更新和评估。
 # 通过这种方式，可以在保护数据隐私的同时提高模型的性能。
 
+
 class Trainer:
     def __init__(self, model, args):
         """
@@ -60,7 +61,7 @@ class Trainer:
         train
         ---
         Args
-            data: dataset for training
+            data: data for training
         Returns
             accuracy, loss
         """
@@ -128,7 +129,7 @@ class Trainer:
         train with no local SGD updates
         ---
         Args
-            data: dataset for training
+            data: data for training
         Returns
             accuracy, loss
         """
@@ -179,7 +180,7 @@ class Trainer:
         ---
         Args
             model: model for test
-            data: dataset for test
+            data: data for test
         Returns
             accuracy, loss, AUC (optional)
         """

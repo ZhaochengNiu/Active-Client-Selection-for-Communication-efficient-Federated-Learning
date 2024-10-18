@@ -13,7 +13,7 @@ def save_files(args):
     args.machine = platform.uname().node
     args.start = time.strftime('%Y%m%d-%H%M%S', time.localtime())
     # 记录实验的机器名称和开始时间。
-    #args.save_path = f'./results/{args.dataset}/{args.method}-{args.fed_algo}-{args.num_clients_per_round}-{args.total_num_clients}/{args.start}'
+    #args.save_path = f'./results/{args.data}/{args.method}-{args.fed_algo}-{args.num_clients_per_round}-{args.total_num_clients}/{args.start}'
     alpha = f'_a{args.alpha2}' if 'MaxEntropySampling' in args.method else ''
     dirichlet_alpha = f'_Da{args.dirichlet_alpha}' if args.dataset == 'PartitionedCIFAR10' else ''
     # 根据实验方法和数据集，生成额外的标识符，用于区分不同的实验设置。

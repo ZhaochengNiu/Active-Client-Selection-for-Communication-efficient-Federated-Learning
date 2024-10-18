@@ -30,7 +30,7 @@ python main.py --method {client selection method you want}
    Download from this [[link](https://github.com/FedML-AI/FedML/blob/master/python/fedml/data/FederatedEMNIST/download_federatedEMNIST.sh)] and place them in your data directory ```data_dir```.
     
     ```shell
-    python src/main.py --dataset FederatedEMNIST --model CNN -A 10 -K 3400 --lr_local 0.1 -B 20 -R 2000 
+    python src/main.py --data FederatedEMNIST --model CNN -A 10 -K 3400 --lr_local 0.1 -B 20 -R 2000 
    ```
 
 2. CelebA
@@ -38,7 +38,7 @@ python main.py --method {client selection method you want}
    Download from the original CelebA homepage [[link](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)].
 
    ```shell
-   python src/main.py --dataset CelebA --model CNN -A 10 -K 9343 --lr_local 0.005 -B 5 -R 100
+   python src/main.py --data CelebA --model CNN -A 10 -K 9343 --lr_local 0.005 -B 5 -R 100
    ```
 
 3. FederatedCIFAR100
@@ -46,7 +46,7 @@ python main.py --method {client selection method you want}
    Download from this [[link](https://github.com/FedML-AI/FedML/blob/master/python/fedml/data/fed_cifar100/download_fedcifar100.sh)].
 
    ```shell
-    python src/main.py --dataset FedCIFAR100 --model ResNet -A 10 -K 500 --lr_local 0.1 -B 20 -R 4000 
+    python src/main.py --data FedCIFAR100 --model ResNet -A 10 -K 500 --lr_local 0.1 -B 20 -R 4000 
    ```
 
 4. FederatedCIFAR10 (Partitioned by Dirichlet distribution, followed by Clustered Sampling)
@@ -54,13 +54,13 @@ python main.py --method {client selection method you want}
    Don't need to download any dataset.
     
    ```shell
-    python src/main.py --dataset PartitionedCIFAR10 --model CNN -A 10 -K 100 --lr_local 0.001 -B 50 -R 1000 
+    python src/main.py --data PartitionedCIFAR10 --model CNN -A 10 -K 100 --lr_local 0.001 -B 50 -R 1000 
    ```
 
 5. Reddit
 
    ```shell
-    python src/main.py --dataset Reddit --model BLSTM -A 200 -K 7527 --maxlen 400 \
+    python src/main.py --data Reddit --model BLSTM -A 200 -K 7527 --maxlen 400 \
         --alpha1 0.75 --alpha2 0.01 --alpha3 0.1 \
         --lr_local 0.01 --lr_global 0.001 -E 2 -B 128 -R 100
    ```

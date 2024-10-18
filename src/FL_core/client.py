@@ -18,9 +18,9 @@ class Client(object):
         ---
         Args
             client_idx: index of the client
-            nTrain: number of train dataset of the client
-            local_train_data: train dataset of the client
-            local_test_data: test dataset of the client
+            nTrain: number of train data of the client
+            local_train_data: train data of the client
+            local_test_data: test data of the client
             model: given model for the client
             args: arguments for overall FL training
         """
@@ -80,10 +80,10 @@ class Client(object):
         # TEST
         # 定义了 test 方法，用于测试模型。
         if test_on_training_data:
-            # test on training dataset
+            # test on training data
             result = self.trainer.test(model, self.labeled_data)
         else:
-            # test on test dataset
+            # test on test data
             result = self.trainer.test(model, self.test_data)
         # 根据参数决定是在训练数据还是测试数据上进行测试。
         return result

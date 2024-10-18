@@ -26,7 +26,7 @@ class FederatedEMNISTDataset_nonIID:
         # 打印客户端总数。
         print(f'Total number of users: {self.train_num_clients}')
         # 计算并打印实际参与训练和测试的客户端数量。
-        # self.dataset['train']['data_sizes'] 和 self.dataset['test']['data_sizes'] 是字典，键为客户端 ID，值为客户端的样本数量。
+        # self.data['train']['data_sizes'] 和 self.data['test']['data_sizes'] 是字典，键为客户端 ID，值为客户端的样本数量。
         self.train_num_clients = len(self.dataset['train']['data_sizes'].keys())
         self.test_num_clients = len(self.dataset['test']['data_sizes'].keys())
         print(f'#TrainClients {self.train_num_clients} #TestClients {self.test_num_clients}')
@@ -44,8 +44,8 @@ class FederatedEMNISTDataset_nonIID:
             dataset = preprocess(data_dir, self.train_num_clients)
             
             # with open(file_name, 'wb') as f:
-            #     pickle.dump(dataset, f)
-        # 最后将加载或预处理好的数据集保存在 self.dataset 中。
+            #     pickle.dump(data, f)
+        # 最后将加载或预处理好的数据集保存在 self.data 中。
         self.dataset = dataset
 
 
@@ -62,7 +62,7 @@ def preprocess(data_dir, num_clients=None):
     print(f'num_clients_train {num_clients_train} num_clients_test {num_clients_test}')
     # 初始化字典存储各客户端的本地训练和测试数据，train_data_local_dict 和 test_data_local_dict 分别用于存储训练和测试数据，
     # train_data_local_num_dict 和 test_data_local_num_dict 记录每个客户端的数据大小
-    # local dataset
+    # local data
     train_data_local_dict, train_data_local_num_dict = {}, {}
     test_data_local_dict, test_data_local_num_dict = {}, {}
     idx = 0

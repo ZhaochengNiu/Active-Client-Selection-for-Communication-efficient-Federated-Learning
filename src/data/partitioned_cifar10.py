@@ -7,6 +7,7 @@ import torchvision.transforms as T
 from torch.utils.data import TensorDataset
 import torch
 import numpy as np
+import pickle
 import os
 
 # 该代码使用 Dirichlet 分布将 CIFAR-10 数据集划分给多个客户端，每个客户端的数据类别比例不同，模拟了联邦学习中数据异构性 (non-IID)。
@@ -54,11 +55,11 @@ class PartitionedCIFAR10Dataset(object):
                 'train': train_data, 
                 'test' : test_data
             }
-        # 将处理好的数据集保存在 self.dataset 属性中。
+        # 将处理好的数据集保存在 self.data 属性中。
         self.dataset = dataset
 
     def partition_CIFAR_dataset(self, data_dir, matrix, train):
-        """Partition dataset into `n_clients`.
+        """Partition data into `n_clients`.
         Each client i has matrix[k, i] of data of class k"""
         # 该方法根据 Dirichlet 分布矩阵将 CIFAR-10 数据集划分给多个客户端。矩阵 matrix[k, i] 表示第 i 个客户端分配了类别 k 的数据比例。
 

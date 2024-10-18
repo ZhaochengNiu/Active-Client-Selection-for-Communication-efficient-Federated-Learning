@@ -6,6 +6,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from tqdm import tqdm
+import json
 # os: 用于处理文件路径和文件操作。
 # pickle: 用于序列化和反序列化 Python 对象。
 # bz2: 用于解压 .bz2 压缩文件（如 Reddit 数据集文件）。
@@ -36,7 +37,7 @@ class RedditDataset:
         # os.path.isfile(file_name): 检查预处理的文件是否存在。
         # 如果存在，并且 batch_size 和 maxlen 都符合要求（分别是 128 和 400），则直接用 pickle 加载数据集。
         # 否则，调用 preprocess 函数对原始 Reddit 数据进行预处理。
-        # self.dataset = dataset: 保存处理好的数据集。
+        # self.data = data: 保存处理好的数据集。
         file_name = os.path.join(data_dir, 'Reddit_preprocessed_7668.pickle')
         if os.path.isfile(file_name) and self.batch_size == 128 and self.maxlen == 400:
             with open(file_name, 'rb') as f:
@@ -84,7 +85,7 @@ def preprocess(data_dir):
     final_dataset = {}
     new_idx = 0
     for user_id, user_idx in tqdm(users.items()):
-        # dataset[user_idx]['num_data'] = len(dataset[user_idx]['label'])
+        # data[user_idx]['num_data'] = len(data[user_idx]['label'])
         # preprocess 1
         if user_idx in select_users_indices:
             _data = dataset[user_idx]

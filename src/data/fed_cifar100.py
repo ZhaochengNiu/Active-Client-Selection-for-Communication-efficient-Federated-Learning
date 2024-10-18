@@ -51,7 +51,7 @@ def preprocess(data_dir, num_clients=None):
     num_clients_test = len(test_ids)
     print(f'num_clients_train {num_clients_train} num_clients_test {num_clients_test}')
 
-    # local dataset
+    # local data
     train_data_local_dict, train_data_local_num_dict = {}, {}
     test_data_local_dict, test_data_local_num_dict = {}, {}
 

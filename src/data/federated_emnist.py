@@ -33,13 +33,14 @@ class FederatedEMNISTDataset:
                 dataset = pickle.load(f)
         else:
             dataset = preprocess(data_dir, self.train_num_clients)
-            #dataset = batch_preprocess(data_dir, self.batch_size, self.train_num_clients)
+            #data = batch_preprocess(data_dir, self.batch_size, self.train_num_clients)
         self.dataset = dataset
 
 
 def preprocess(data_dir, num_clients=None):
     # preprocess 函数读取 EMNIST 数据集的 HDF5 文件，加载训练和测试数据，并将图像调整为 PyTorch 张量。
     # 然后，它创建 TensorDataset 对象来存储图像数据和标签，并将它们存储在字典中。
+    # print("Current working directory:", os.getcwd())
     train_data = h5py.File(os.path.join(data_dir, 'fed_emnist_train.h5'), 'r')
     test_data = h5py.File(os.path.join(data_dir, 'fed_emnist_test.h5'), 'r')
 
@@ -49,7 +50,7 @@ def preprocess(data_dir, num_clients=None):
     num_clients_test = len(test_ids) if num_clients is None else num_clients
     print(f'num_clients_train {num_clients_train} num_clients_test {num_clients_test}')
 
-    # local dataset
+    # local data
     train_data_local_dict, train_data_local_num_dict = {}, {}
     test_data_local_dict, test_data_local_num_dict = {}, {}
 

@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d495209-5f52-428e-9130-3b0ddabe35d6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Active-Client-Selection-for-Communication-efficient-Federated-Learning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Active-Client-Selection-for-Communication-efficient-Federated-Learning.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/FederatedEMNIST/download_federatedEMNIST.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FL_core/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/client_selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/client_selection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/clustered.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/clustered.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/divfl.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/divfl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/grad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/grad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/client_selection/loss_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client_selection/loss_based.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/federated_algorithm/federated_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/federated_algorithm/federated_algorithm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FL_core/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FL_core/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/trainer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/celeba.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/celeba.py" afterDir="false" />
@@ -26,10 +19,6 @@
       <change beforePath="$PROJECT_DIR$/src/data/partitioned_cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/partitioned_cifar10.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/reddit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/reddit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BLSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BLSTM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/CNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/group_normalization.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/group_normalization.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/resnet_gn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/resnet_gn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/argparse.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/argparse.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.py" afterDir="false" />
     </list>
@@ -57,9 +46,81 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/niuzhaocheng/Documents/code/Active-Client-Selection-for-Communication-efficient-Federated-Learning/src/data/FederatedEMNIST",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/data/FederatedEMNIST" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="federated_emnist" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Active-Client-Selection-for-Communication-efficient-Federated-Learning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/dataset" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/dataset/federated_emnist.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Active-Client-Selection-for-Communication-efficient-Federated-Learning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="download_federatedEMNIST.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/src/data/FederatedEMNIST/download_federatedEMNIST.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/src/data/FederatedEMNIST" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/env" />
+      <option name="INTERPRETER_OPTIONS" value="bash" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Shell Script.download_federatedEMNIST.sh" />
+        <item itemvalue="Python.federated_emnist" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
