@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d495209-5f52-428e-9130-3b0ddabe35d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/data/FederatedEMNIST/download_federatedEMNIST.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FL_core/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FL_core/trainer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/celeba.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/celeba.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/fed_cifar100.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/fed_cifar100.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/federated_emnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/federated_emnist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/federated_emnist_iid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/federated_emnist_iid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/federated_emnist_noniid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/federated_emnist_noniid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/partitioned_cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/partitioned_cifar10.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/reddit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/reddit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/argparse.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/argparse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.py" afterDir="false" />
-    </list>
+    <list default="true" id="4d495209-5f52-428e-9130-3b0ddabe35d6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,15 +24,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/niuzhaocheng/Documents/code/Active-Client-Selection-for-Communication-efficient-Federated-Learning/src/data/FederatedEMNIST",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/niuzhaocheng/Documents/code/Active-Client-Selection-for-Communication-efficient-Federated-Learning/src/data/FederatedEMNIST&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/data/FederatedEMNIST" />
